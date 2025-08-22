@@ -1,0 +1,9 @@
+.env
+env
+/venv
+.venv
+.next
+
+employee-service/venv
+department-service/venv
+
