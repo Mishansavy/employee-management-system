@@ -57,82 +57,99 @@ Follow these steps to set up and run the system:
 
 Create the two required databases:
 
-```sql
+\`\`\`sql
 CREATE DATABASE department_db;
 CREATE DATABASE employee_db;
-2. Run the Department Service
-bash
-Copy
-Edit
+\`\`\`
+
+### 2. Run the Department Service
+
+\`\`\`bash
+
 # Navigate to the service directory
+
 cd department-service
 
 # Create and activate a virtual environment
+
 python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
+source venv/bin/activate # Windows: venv\Scripts\activate
 
 # Install dependencies
+
 pip install -r requirements.txt
 
 # Run the service
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-✅ The Department Service runs at: http://localhost:8000
 
-3. Run the Employee Service
-bash
-Copy
-Edit
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+\`\`\`
+
+✅ The Department Service runs at: [http://localhost:8000](http://localhost:8000)
+
+### 3. Run the Employee Service
+
+\`\`\`bash
+
 # Navigate to the service directory
+
 cd employee-service
 
 # Create and activate a virtual environment
+
 python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
+source venv/bin/activate # Windows: venv\Scripts\activate
 
 # Install dependencies
+
 pip install -r requirements.txt
 
 # Run the service
-uvicorn app.main:app --host 0.0.0.0 --port 8001 --reload
-✅ The Employee Service runs at: http://localhost:8001
 
-4. Run the Frontend Dashboard
-bash
-Copy
-Edit
+uvicorn app.main:app --host 0.0.0.0 --port 8001 --reload
+\`\`\`
+
+✅ The Employee Service runs at: [http://localhost:8001](http://localhost:8001)
+
+### 4. Run the Frontend Dashboard
+
+\`\`\`bash
+
 # Navigate to the frontend directory
+
 cd dashboard-frontend
 
 # Install dependencies
+
 npm install
 
 # Run the development server
+
 npm run dev
-✅ The Dashboard runs at: http://localhost:3000
+\`\`\`
 
-🖥️ How to Use the Application
-Open your browser at http://localhost:3000.
+✅ The Dashboard runs at: [http://localhost:3000](http://localhost:3000)
 
-Navigate to Departments:
+---
 
-Create departments (e.g., Engineering, Marketing, HR).
+## 🖥️ How to Use the Application
 
-They’ll appear in the list below the form.
+1. Open your browser at [http://localhost:3000](http://localhost:3000).
+2. Navigate to **Departments**:
+   - Create departments (e.g., `Engineering`, `Marketing`, `HR`).
+   - They’ll appear in the list below the form.
+3. Navigate to **Employees**:
+   - Create a new employee.
+   - The **“Select a department”** dropdown will show the departments you created.
+   - When you add an employee, the **Employee Service** calls the **Department Service** to verify the department ID before saving the record.
 
-Navigate to Employees:
+---
 
-Create a new employee.
+## 📚 Summary
 
-The “Select a department” dropdown will show the departments you created.
+- **Department Service** → manages departments.
+- **Employee Service** → manages employees, validates departments.
+- **Dashboard** → provides a UI for managing both.
 
-When you add an employee, the Employee Service calls the Department Service to verify the department ID before saving the record.
+This setup demonstrates how **microservices** interact and how a frontend client integrates multiple backends.
 
-📚 Summary
-Department Service → manages departments.
-
-Employee Service → manages employees, validates departments.
-
-Dashboard → provides a UI for managing both.
-
-This setup demonstrates how microservices interact and how a frontend client integrates multiple backends.
-```
+---
